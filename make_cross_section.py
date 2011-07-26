@@ -1,6 +1,6 @@
 '''
 Make Cross Section
-Copyright (C) 2011  Joar Wandborg
+Copyright (C) 2011  Patrick R, Joar Wandborg
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
