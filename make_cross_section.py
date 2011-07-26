@@ -1,33 +1,33 @@
-# ##### BEGIN GPL LICENSE BLOCK #####
-#
-#  This program is free software; you can redistribute it and/or
-#  modify it under the terms of the GNU General Public License
-#  as published by the Free Software Foundation; either version 2
-#  of the License, or (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with this program; if not, write to the Free Software Foundation,
-#  Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-#
-# ##### END GPL LICENSE BLOCK #####
+'''
+Make Cross Section
+Copyright (C) 2011  Joar Wandborg
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+'''
 
 bl_info = {
     "name": "Make Cross Section",
     "author": "Joar Wandborg, HEAVILY based on Patrick R's \
-cross_section_matrix_apply.py",
+cross_section_matrix_apply.py from http://goo.gl/xqJ3x",
     "version": (1, 0),
-    "blender": (2, 5, 6),
+    "blender": (2, 5, 8),
     "api": 31965,
     "location": "Object Properties",
     "description": "Makes a Cross Section",
     "warning": "",
-    "wiki_url": "tba",
-    "tracker_url": "",
+    "wiki_url": "https://github.com/jwandborg/blender-make_cross_section",
+    "tracker_url": "https://github.com/jwandborg/blender-make_cross_section/issues",
     "category": "Object"}
 
 import bpy
@@ -169,6 +169,7 @@ def main():
     for object in dont_delete:
         object.select = False
     bpy.ops.object.delete()
+
 
 class MakeCrossSection(bpy.types.Operator):
     '''
