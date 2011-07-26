@@ -16,14 +16,14 @@
 #
 # ##### END GPL LICENSE BLOCK #####
 
-bl_addon_info = {
-    "name": "Make Cross Section Matrix Apply",
+bl_info = {
+    "name": "Make Cross Section",
     "author": "Joar Wandborg, HEAVILY based on Patrick R's \
 cross_section_matrix_apply.py",
     "version": (1, 0),
     "blender": (2, 5, 6),
     "api": 31965,
-    "location": "Object Properties ",
+    "location": "Object Properties",
     "description": "Makes a Cross Section",
     "warning": "",
     "wiki_url": "tba",
@@ -133,18 +133,30 @@ def main():
 
     bpy.ops.object.select_all(action='DESELECT')
     ob_act.select = True
+
+    bpy.ops.object.transform_apply()
+    '''
+    Substituted by transform_apply
     bpy.ops.object.location_apply()
     bpy.ops.object.rotation_apply()
     bpy.ops.object.scale_apply()
+    '''
+
     pp = ob_act.data.vertices[0].co
     pno = ob_act.data.faces[0].normal
     bpy.ops.object.select_all(action='DESELECT')
 
     for o in to_cut:
         o.select = True
+
+        bpy.ops.object.transform_apply()
+        '''
+        Substituted by transform_apply
         bpy.ops.object.location_apply()
         bpy.ops.object.rotation_apply()
         bpy.ops.object.scale_apply()
+        '''
+
         cut_me = o.data
         mx = o.matrix_world
         x_me = section(cut_me, mx, pp, pno, FILL=False)
@@ -157,7 +169,6 @@ def main():
     for object in dont_delete:
         object.select = False
     bpy.ops.object.delete()
-
 
 class MakeCrossSection(bpy.types.Operator):
     '''
@@ -211,8 +222,11 @@ class OBJECT_PT_cross(bpy.types.Panel):
 
 
 def register():
-    bpy.utils.register_class(self.OBJECT_PT_cross)
-
+    bpy.utils.register_class(OBJECT_PT_cross)
+    bpy.utils.register_class(MakeCrossSection)
+    print(__name__ + ' is registered')
 
 def unregister():
-    bpy.utils.unregister_class(self.OBJECT_PT_cross)
+    bpy.utils.unregister_class(OBJECT_PT_cross)
+    bpy.utils.unregister_class(MakeCrossSection)
+    print(__name__ + ' is unregistered')
